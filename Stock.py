@@ -22,11 +22,11 @@ class Stock:
        low value, closing value, and volume."""
 
     self._date=date
-    self._openingV=openingV
-    self._highV=highV
-    self._lowV=lowV
-    self._closingV=closingV
-    self._volume=volume
+    self._openingV=float(openingV)
+    self._highV=float(highV)
+    self._lowV=float(lowV)
+    self._closingV=float(closingV)
+    self._volume=float(volume)
 
   def setDate(self, date):
     """Assign the received date of the Stock"""
@@ -54,7 +54,7 @@ class Stock:
 
   def setLowVal(self, lowV):
     """Assign the low value of the Stock"""
-    self._lowV=lowV
+    self._lowV=float(lowV)
 
   def getLowVal(self):
     """Return the low value of the Stock"""
@@ -62,7 +62,7 @@ class Stock:
 
   def setClosingVal(self, closingV):
     """Assign the closing value of the Stock"""
-    self._closingV=closingV
+    self._closingV=float(closingV)
 
   def getClosingVal(self):
     """Return the closing value of the Stock"""
@@ -70,7 +70,7 @@ class Stock:
 
   def setVolume(self, volume):
     """Assign the volume of the Stock"""
-    self._volume=volume
+    self._volume=float(volume)
 
   def getVolume(self):
     """Return the volume of the Stock"""
@@ -78,4 +78,8 @@ class Stock:
 
   def __str__(self):
     """Return a string containing all the Stock data"""
-    display='Date: 
+    display='Here is the stock for '+str(self._date)
+    display+='\nOpening\tClosing\tHigh\tLow\tVolume'
+    display+='\n'+str(self._date)+str(round(self._openingV,2))
+    display+='\t'+str(round(self._highV,2))+'\t'str(round(self.lowV,2))
+    display+='\t'+str(round(self._closingV,2))+'\t'str(self._volume)
