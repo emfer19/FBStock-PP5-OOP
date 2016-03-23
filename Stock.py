@@ -80,15 +80,19 @@ class Stock:
     """Return a string containing all the Stock data"""
     display='Here is the stock for '+str(self._date)
     display+='\nOpening\tClosing\tHigh\tLow\tVolume'
-    display+='\n'+str(self._date)+'\t'+str(round(self._openingV,2))
-    display+='\t'+str(round(self._highV,2))+'\t'+str(round(self.lowV,2))
-    display+='\t'+str(round(self._closingV,2))+'\t'+str(self._volume)
+    display+='\n'+str(self._openingV)
+    display+='\t'+str(self._highV)+'\t'+str(self._lowV)
+    display+='\t'+str(self._closingV)+'\t'+str(self._volume)+'\n'
+    return display
+
 
 #end of class
 
 #class unit test
 if __name__=='__main__':
-  aStock=Stock()
+  aStock=Stock('3/1/12','4','6','2','14','5')
+  print aStock
+
   aStock.setDate('3/1/2016')
   print aStock.getDate()
 
