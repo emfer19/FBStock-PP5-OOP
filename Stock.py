@@ -17,9 +17,8 @@ class Stock:
       - Closing Value
       - Volume"""
 
-  def __init__(self, date, openingV, highV, lowV, closingV, volume):
-    """create stock with given date, opening value, high value,
-       low value, closing value, and volume."""
+  def __init__(self):
+    """create stock object"""
 
     self._date=date
     self._openingV=float(openingV)
