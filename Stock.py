@@ -18,18 +18,18 @@ class Stock:
       - Volume"""
 
   def __init__(self):
-    """create stock object"""
+    """Creates a new Stock instance"""
 
-    self._date=date
-    self._openingV=float(openingV)
-    self._highV=float(highV)
-    self._lowV=float(lowV)
-    self._closingV=float(closingV)
-    self._volume=float(volume)
+    self._date=''
+    self._openingV=0.0
+    self._highV=0.0
+    self._lowV=0.0
+    self._closingV=0.0
+    self._volume=0.0
 
   def setDate(self, date):
     """Assign the received date of the Stock"""
-    self._date=date
+    self._date=str(date)
 
   def getDate(self):
     """Return the date of the Stock"""
