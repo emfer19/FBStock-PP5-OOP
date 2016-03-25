@@ -25,8 +25,8 @@ class Stock:
     self._highV=0.0
     self._lowV=0.0
     self._closingV=0.0
-    self._volume=0.0
-
+    self._volume=0
+    
   def setDate(self, date):
     """Assign the received date of the Stock"""
     self._date=str(date)
@@ -69,7 +69,7 @@ class Stock:
 
   def setVolume(self, volume):
     """Assign the volume of the Stock"""
-    self._volume=float(volume)
+    self._volume=int(volume)
 
   def getVolume(self):
     """Return the volume of the Stock"""
