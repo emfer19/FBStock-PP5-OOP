@@ -14,7 +14,7 @@ class FBStock:
   def __init__(self):
     """receives nothing"""
 
-    self._fileobj=None
+    self._fileObj=None
     self._stocks=[]
     
   def openFile(self):
@@ -26,7 +26,7 @@ class FBStock:
 	self._fileObj=file(filename)
       except IOError:
 	print 'unable to open file',filename
-
+    
   def get_data_list(self):
     """Read file of stock data, create list of Stock objects"""
     line=self._fileObj.readline() #read first line, trash because headers
@@ -45,6 +45,7 @@ class FBStock:
       self._stocks.append(stockObj)
 
       line=self._fileObj.readline()
+    self._fileObj.close()
 
   def average_data(self,year):
     """Receive a year and find average of data for each column for year.
