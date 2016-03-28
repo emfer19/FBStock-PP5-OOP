@@ -64,16 +64,18 @@ class FBStock:
     monthLow=0 #month with the lowest close
     counter=0
 
-    for i in len(self._stocks):
-      dateStock=self._stocks[i].getDate().split()
-      if str(year)==dateStock[2]:
+    for i in range(len(self._stocks)):
+      dateStock=self._stocks[i].getDate()
+      dateStock=dateStock.split('/') #split the date up into its parts
+      if str(year)==dateStock[2]: #if the received year matches the stock data year
         openingAvg+=self._stocks[i].getOpeningVal()
 	highAvg+=self._stocks[i].getHighVal()
-        lowAvg+=self_.stocks[i].getLowVal()
+        lowAvg+=self._stocks[i].getLowVal()
 	closingAvg+=self._stocks[i].getClosingVal()
 	volAvg+=self._stocks[i].getVolume()
 	counter+=1
 
+        #find highest opening value and the month it occured
 	if self._stocks[i].getOpeningVal()>highMonthOpen:
 	  highMonthOpen=self._stocks[i].getOpeningVal()
 	  monthHigh=dateStock[0]
@@ -83,8 +85,10 @@ class FBStock:
 	  elif dateStock[0]<monthHigh:
 	    monthHigh=dateStock[0]
 
+        #find lowest closing value and the month it occured
 	if lowMonthClose==0:
 	  lowMonthClose=self._stocks[i].getClosingVal()
+	  monthLow=dateStock[0]
 	elif self._stocks[i].getClosingVal()<lowMonthClose:
 	  lowMonthClose=self._stocks[i].getClosingVal()
 	  monthLow=dateStock[0]
@@ -93,11 +97,11 @@ class FBStock:
 	    monthLow=dateStock[0]
 	  elif dateStock[0]<monthLow:
 	    monthLow=dateStock[0]
-      openingAvg/=counter
-      highAvg/=counter
-      lowAvg/=counter
-      closingAvg/=counter
-      volAvg/=counter
+    openingAvg=openingAvg/counter
+    highAvg=highAvg/counter
+    lowAvg=lowAvg/counter
+    closingAvg=closingAvg/counter
+    volAvg=volAvg/counter
 
     print 'Here are the averages for Facebook Stock for year',str(year)
     print 'Opening\tHigh\tLow\tClosing\tVolume'
