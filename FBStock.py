@@ -14,7 +14,7 @@ class FBStock:
   def __init__(self):
     """receives nothing"""
 
-    self._fileobj=None
+    self._fileobj=''
     self._stocks=[]
     
   def openFile(self):
@@ -52,13 +52,62 @@ class FBStock:
     Will also calculate and display month within received year with 
     the highest closing value, and month with the lowest closing value.
       **In the case of a "tie", earliest month of that year will be shown."""
-    objects=[]
+    openingAvg=0.0
+    highAvg=0.0
+    lowAvg=0.0
+    closingAvg=0.0
+    volAvg=0
+    highMonthOpen=0 #highest opening value
+    monthHigh=0 #month with the highest open
+    lowMonthClose=0 #lowest closing value
+    monthLow=0 #month with the lowest close
+    counter=0
+
     for i in len(self._stocks):
-      if str(year) in self._stocks[i].getDate():
-        objects.append()
-    print objects
+      dateStock=self._stocks[i].getDate().split()
+      if str(year)==dateStock[2]:
+        openingAvg+=self._stocks[i].getOpeningVal()
+	highAvg+=self._stocks[i].getHighVal()
+        lowAvg+=self_.stocks[i].getLowVal()
+	closingAvg+=self._stocks[i].getClosingVal()
+	volAvg+=self._stocks[i].getVolume()
+	counter+=1
+
+	if self._stocks[i].getOpeningVal()>highMonthOpen:
+	  highMonthOpen=self._stocks[i].getOpeningVal()
+	  monthHigh=dateStock[0]
+	elif self._stocks[i].getOpeningVal()==highMonthOpen:
+	  if monthHigh==0:
+	    monthHigh=dateStock[0]
+	  elif dateStock[0]<monthHigh:
+	    monthHigh=dateStock[0]
+
+	if lowMonthClose==0:
+	  lowMonthClose=self._stocks[i].getClosingVal()
+	elif self._stocks[i].getClosingVal()<lowMonthClose:
+	  lowMonthClose=self._stocks[i].getClosingVal()
+	  monthLow=dateStock[0]
+	elif self._stocks[i].getClosingVal()==lowMonthClose:
+	  if monthLow==0:
+	    monthLow=dateStock[0]
+	  elif dateStock[0]<monthLow:
+	    monthLow=dateStock[0]
+      openingAvg/=counter
+      highAvg/=counter
+      lowAvg/=counter
+      closingAvg/=counter
+      volAvg/=counter
+
+    print 'Here are the averages for Facebook Stock for year',str(year)
+    print 'Opening\tHigh\tLow\tClosing\tVolume'
+    print str(openingAvg)+'\t'+str(highAvg)+'\t'+str(lowAvg)+'\t'+str(closingAvg)+'\t'+str(volAvg)
+    print '\nThe month with the highest opening value was',str(monthHigh),'with',str(highMonthOpen)
+    print 'The month with the lowest closing value was',str(monthLow),'with',str(lowMonthClose)
 
 
 #unit testing
 if __name__=='__main__':
-  
+ stocks=FBStock()
+ stocks.openFile()
+ stocks.get_data_list()
+ stocks.average_date(2010)
