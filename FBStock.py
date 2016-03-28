@@ -14,7 +14,7 @@ class FBStock:
   def __init__(self):
     """receives nothing"""
 
-    self._fileobj=''
+    self._fileobj=None
     self._stocks=[]
     
   def openFile(self):
