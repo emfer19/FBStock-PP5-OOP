@@ -96,7 +96,10 @@ class FBStock:
 	  if monthLow==0:
 	    monthLow=dateStock[0]
 	  elif dateStock[0]<monthLow:
-	    monthLow=dateStock[0]
+            monthLow=dateStock[0]
+      i+=1
+
+    #find averages
     openingAvg=openingAvg/counter
     highAvg=highAvg/counter
     lowAvg=lowAvg/counter
@@ -104,11 +107,12 @@ class FBStock:
     volAvg=volAvg/counter
 
     print 'Here are the averages for Facebook Stock for year',str(year)
-    print 'Opening\tHigh\tLow\tClosing\tVolume'
-    print str(openingAvg)+'\t'+str(highAvg)+'\t'+str(lowAvg)+'\t'+str(closingAvg)+'\t'+str(volAvg)
+    print 'Opening\t\tHigh\tLow\tClosing\t\tVolume'
+    print str(round(openingAvg,2))+'\t\t'+str(round(highAvg,2))+'\t'+str(round(lowAvg,2))+'\t'+str(round(closingAvg,2))+'\t\t'+str(volAvg)
     print '\nThe month with the highest opening value was',str(monthHigh),'with',str(highMonthOpen)
     print 'The month with the lowest closing value was',str(monthLow),'with',str(lowMonthClose)
 
+#end of class code
 
 #unit testing
 if __name__=='__main__':
