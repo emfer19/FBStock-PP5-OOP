@@ -111,4 +111,4 @@ if __name__=='__main__':
  stocks=FBStock()
  stocks.openFile()
  stocks.get_data_list()
- stocks.average_date(2010)
+ stocks.average_data(2010)
