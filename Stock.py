@@ -89,8 +89,8 @@ class Stock:
 
 #class unit test
 if __name__=='__main__':
-  aStock=Stock('3/1/12','4','6','2','14','5')
-  print aStock
+
+  aStock=Stock()
 
   aStock.setDate('3/1/2016')
   print aStock.getDate()
